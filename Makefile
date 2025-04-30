@@ -2,16 +2,15 @@
 
 UNAME_S := $(shell uname -s)
 
-
 NAME = sinus-ed
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+# CFLAGS = -Wall -Wextra -Werror
 
 # DEPENDENCIES
 
-DEPS = Makefile includes/maze_solver.h
+DEPS = Makefile includes/main.h
 
 
 # Flags and Libs Depend on the OS
@@ -39,7 +38,7 @@ OBJS = $(SRCS:.c=.o)
 # Rules
 
 %.o : %.c $(DEPS)
-	$(CC) $(MLX_C_FLAGS) $(CFLAGS) -c $< -o $@
+	$(CC) -I includes $(MLX_C_FLAGS) $(CFLAGS) -c $< -o $@
 
 # targets
 
