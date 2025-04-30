@@ -1,7 +1,5 @@
 #include "main.h"
 
-
-
 static	char	*validate_file(char *filename, char *operation) 
 {
 	int		fd = 0;
@@ -37,14 +35,34 @@ static	char	*validate_file(char *filename, char *operation)
 	}
 }
 
-t_screen *parse(char **argv) 
+void	parse(char **argv) 
 {
 	t_screen	*screen = NULL;
 	char		*operation = argv[1];
+	char		*buffer = NULL;
 
 	// IF OPERATION IS NOT ENCODE OR DECODE
 	if (strcmp(operation,"decode") && strcmp(operation,"encode"))
 		exit_error("Operation name must [decode] or [encode]");
+	
 	// VALIDATING FILE DEPENDS ON OPERATION
-	validate_file(argv[2], operation);
+	buffer = validate_file(argv[2], operation);
+
+	screen = safe_malloc(sizeof(t_screen));
+	screen->operation = operation;
+
+	// IN CASE OF DECODE WEE NEED TO HAVE IMAGE TO PARSE
+	if (strcmp(operation, "decode") == 0)
+		screen->image_to_parse = argv[2];
+	screen->width = 800;
+	screen->height = 600;
+	screen->bin_data = buffer;
+	// INITIALIZING MLX
+	init_screen(screen);
+	
+	// IF OPERATION IS ENCODE
+	if (strcmp(operation, "encode") == 0) 
+		encode(screen);
+	
+	mlx_loop(screen->mlx);
 }

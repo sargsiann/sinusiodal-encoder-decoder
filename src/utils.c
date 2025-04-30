@@ -4,8 +4,7 @@ void	*safe_malloc(size_t size)
 {
 	void	*ptr = malloc(size);
 	if (!ptr) {
-		fprintf(stderr, "Memory allocation failed\n");
-		exit(1);
+		exit_error("Memory allocation failed\n");
 	}
 	return ptr;
 }
@@ -14,11 +13,18 @@ void	*safe_calloc(size_t count, size_t size)
 {
 	void	*ptr = calloc(count, size);
 	if (!ptr) {
-		fprintf(stderr, "Memory allocation failed\n");
-		exit(1);
+		exit_error("Memory allocation failed\n");
 	}
 	return ptr;
 }
+
+void	safe_free(void *ptr) 
+{
+	if (ptr) {
+		free(ptr);
+	}
+}
+
 
 void	exit_error(const char *err) {
 	fprintf(stderr,"%s",err);

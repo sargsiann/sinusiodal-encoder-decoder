@@ -9,11 +9,16 @@
 # include "mlx.h"
 # include <string.h>
 # include <limits.h>
+# include <math.h>
 
+# define BUFFER_SIZE 1024
+# define WIDTH 800
+# define HEIGHT 600
 
 void	exit_error(const char *err);
 
 typedef	struct	s_image {
+	void	*img;
 	int		bpp;
 	int		line_size;
 	int		endian;
@@ -26,13 +31,19 @@ typedef struct	s_screen {
 	int		width;
 	int		height;
 	char	*operation;
-	char	*filename;
+	char	*image_to_parse;
+	char	*bin_data;
 	t_image	*img;
 }	t_screen;
 
-t_screen	*parse(char **argv);
+void		parse(char **argv);
 void		*safe_malloc(size_t size);
 void		*safe_calloc(size_t count, size_t size);
-
+void		init_screen(t_screen *screen);
+void		safe_free(void *ptr);
+void		free_screen(t_screen *screen);
+void		encode(t_screen *screen);
+void		draw_line_dda(t_image *img, int x0, int y0, int x1, int y1, int color);
+void		my_pixel_put(t_image *img, int x, int y, int color);
 
 #endif
