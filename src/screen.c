@@ -2,7 +2,6 @@
 
 int	key_hook(int keycode, t_screen *screen) 
 {
-	printf("Key pressed: %d\n", keycode);
 	if (keycode == 65307) // ESC key
 	{
 		free_screen(screen);

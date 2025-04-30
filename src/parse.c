@@ -14,10 +14,10 @@ static	char	*validate_file(char *filename, char *operation)
 	if (strcmp(operation, "encode") == 0) {
 		
 		// DEFINING BUFFER
-		buffer = safe_calloc(1024,1);
+		buffer = safe_calloc(1,BUFFER_SIZE);
 
 		// IF CANT READ FILE
-		if (read(fd, buffer, sizeof(buffer)) == -1)
+		if (read(fd, buffer, BUFFER_SIZE) == -1)
 			exit_error("Error while reading file");
 		
 		// IF THERE IS ANYTHING ELSE THAN 0 OR 1 OR NEWLINE OR IS EMPTY

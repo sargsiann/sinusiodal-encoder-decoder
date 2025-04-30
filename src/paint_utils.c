@@ -8,7 +8,6 @@ void	draw_line_dda(t_image *img, int x0, int y0, int x1, int y1, int color)
 	int	dx = x1 - x0;
 	int	dy = y1 - y0;
 
-	printf("dx: %d, dy: %d\n", dx, dy);
 	// FINDING THE MAXIMUM NUMBER OF STEPS
 	int steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
 
