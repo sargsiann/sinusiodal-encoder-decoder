@@ -14,6 +14,7 @@
 # define BUFFER_SIZE 1024
 # define WIDTH 800
 # define HEIGHT 600
+# define PI 3.14
 
 void	exit_error(const char *err);
 

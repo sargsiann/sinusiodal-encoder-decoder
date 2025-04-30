@@ -23,8 +23,6 @@ void	draw_line_dda(t_image *img, int x0, int y0, int x1, int y1, int color)
 		// MAKING INTEGER VALUES FOR THE PIXEL
 		int x = (int)(x0 + i * x_inc);
 		int y = (int)(y0 + i * y_inc);
-
-		printf("x: %d, y: %d\n", x, y);
 		my_pixel_put(img, x, y, color);
 	}
 }
