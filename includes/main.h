@@ -49,5 +49,6 @@ void		encode(t_screen *screen);
 void		draw_line_dda(t_image *img, int x0, int y0, int x1, int y1, int color);
 void		my_pixel_put(t_image *img, int x, int y, int color);
 void		save_to_file(t_screen *screen) ;
+int			chunks_total(char *data);
 
 #endif

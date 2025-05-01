@@ -20,7 +20,7 @@ void	draw_sine_chunk(int	chunk_sx, int chunk_size,  int z_y,int flag, t_screen *
 			y = -y;
 
 		// DRAWING THE LINE
-		draw_line_dda(s->img,old_x,old_y,x + chunk_sx,y + z_y,0xff0000);
+		draw_line_dda(s->img,old_x,old_y,x + chunk_sx,y + z_y,0x00ff0000);
 		old_x = x + chunk_sx;
 		old_y = y + z_y;
 		x+=0.05;
@@ -34,12 +34,11 @@ void	fill(int x, int y, t_screen *screen)
 
 	while (i < 10)
 	{
-		my_pixel_put(screen->img, x, y + i, 0xff0000);
-		my_pixel_put(screen->img, x, y - i, 0xff0000);
+		my_pixel_put(screen->img, x, y + i, 0x00ff0000);
+		my_pixel_put(screen->img, x, y - i, 0x00ff0000);
 		i++;
 	}
 }
-
 
 void	encode(t_screen *screen) 
 {
@@ -51,13 +50,13 @@ void	encode(t_screen *screen)
 
 	// CHUNK STEPS
 
-	int	c_x = (WIDTH - z_x) / (strlen(screen->bin_data));
+	int	c_x = (WIDTH - z_x) / chunks_total(screen->bin_data);
 	
 	// DRAWING THE X AXIS
-	draw_line_dda(screen->img, z_x, z_y, screen->width, z_y, 0x00ff00);
+	draw_line_dda(screen->img, z_x, z_y, screen->width, z_y, 0x0000ff00);
 	
 	// DRAWING THE Y AXIS
-	draw_line_dda(screen->img, z_x, 0, z_x, z_y, 0x00FF00);
+	draw_line_dda(screen->img, z_x, 0, z_x, z_y, 0x0000FF00);
 
 	int i = 0;
 	int flag = 0;

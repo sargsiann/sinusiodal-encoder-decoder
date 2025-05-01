@@ -31,3 +31,13 @@ void	exit_error(const char *err) {
 	fprintf(stderr,"%s",err);
 	exit(1);
 }
+
+int	chunks_total(char *data) {
+	int c = 0;
+	for (int i = 0; i < strlen(data); i++)
+	{
+		if (data[i] != '\n')
+			c++;
+	}
+	return c;
+}

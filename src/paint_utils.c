@@ -28,6 +28,8 @@ void	draw_line_dda(t_image *img, int x0, int y0, int x1, int y1, int color)
 
 void	my_pixel_put(t_image *img, int x, int y, int color) 
 {
+	// COLOR REPRESENTED IN 0XAA_RR_GG_BB FORMAT
+
 	char	*dst;
 
 	// IF INSIDE THE BOUNDS
@@ -35,5 +37,23 @@ void	my_pixel_put(t_image *img, int x, int y, int color)
 		return ;
 
 	dst = img->address + (y * img->line_size + x * (img->bpp / 8));
-	*(unsigned int*)dst = color;
+
+	// WE HAVE 4 BYTES FOR COLOR
+
+	// CHECKING ARRANGMENT OF BYTES IN SYSTEM
+
+	if (img->endian == 0) 
+	{
+		// unsigned char takes rightmost byte like color is 0x000000f0 so it will be f0
+		dst[0] = (unsigned char)(color);         // B 
+		dst[1] = (unsigned char)(color >> 8);    // G
+		dst[2] = (unsigned char)(color >> 16);   // R
+		dst[3] = (unsigned char)(color >> 24);   // A
+	}
+	else{
+		dst[0] = (unsigned char)(color >> 24); // A
+		dst[1] = (unsigned char)(color >> 16); // R
+		dst[2] = (unsigned char)(color >> 24); // G
+		dst[3] = (unsigned char)(color >> 24); // B
+	}
 }
