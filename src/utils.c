@@ -32,7 +32,8 @@ void	exit_error(const char *err) {
 	exit(1);
 }
 
-int	chunks_total(char *data) {
+int	chunks_total(char *data) 
+{
 	int c = 0;
 	for (int i = 0; i < strlen(data); i++)
 	{

@@ -64,7 +64,7 @@ void	parse(char **argv)
 	// IF OPERATION IS ENCODE
 	if (strcmp(operation, "encode") == 0) 
 		encode(screen);
-	// else
-		// decode
+	else
+		decode(screen);
 	mlx_loop(screen->mlx);
 }
