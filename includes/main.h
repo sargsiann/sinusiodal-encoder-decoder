@@ -1,5 +1,6 @@
 #ifndef MAIN_H
 # define MAIN_H
+# define STB_IMAGE_WRITE_IMPLEMENTATION
 
 # include <stdio.h>
 # include <unistd.h>
@@ -11,6 +12,7 @@
 # include <limits.h>
 # include <math.h>
 
+// #include <cstdint.h>
 # define BUFFER_SIZE 1024
 # define WIDTH 800
 # define HEIGHT 600
@@ -46,5 +48,6 @@ void		free_screen(t_screen *screen);
 void		encode(t_screen *screen);
 void		draw_line_dda(t_image *img, int x0, int y0, int x1, int y1, int color);
 void		my_pixel_put(t_image *img, int x, int y, int color);
+void		save_to_file(t_screen *screen) ;
 
 #endif

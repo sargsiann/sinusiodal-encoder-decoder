@@ -57,12 +57,14 @@ void	parse(char **argv)
 	screen->width = 800;
 	screen->height = 600;
 	screen->bin_data = buffer;
+
 	// INITIALIZING MLX
 	init_screen(screen);
 	
 	// IF OPERATION IS ENCODE
 	if (strcmp(operation, "encode") == 0) 
 		encode(screen);
-	
+	else
+		decode
 	mlx_loop(screen->mlx);
 }

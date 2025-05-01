@@ -12,14 +12,14 @@ void	draw_sine_chunk(int	chunk_sx, int chunk_size,  int z_y,int flag, t_screen *
 
 	while (x < chunk_size)
 	{
-		// MINUS FOR THE RIGHT GRAPH FOR SCREEN
-
+		// MINUS FOR THE CORRECT GRAPH FOR SCREEN
 		y = -100 * sin(2 * PI * x / chunk_size);
 		if (flag == 1 && y > 0)
 			y = -y;
 		if (flag == 0 && y < 0)
 			y = -y;
 
+		// DRAWING THE LINE
 		draw_line_dda(s->img,old_x,old_y,x + chunk_sx,y + z_y,0xff0000);
 		old_x = x + chunk_sx;
 		old_y = y + z_y;
@@ -61,6 +61,8 @@ void	encode(t_screen *screen)
 
 	int i = 0;
 	int flag = 0;
+
+	// GOING THROUGH THE FILE AND DRAWING THE SINE CHUNKS
 	while (screen->bin_data[i])
 	{
 		if (screen->bin_data[i] == '1')
@@ -69,8 +71,13 @@ void	encode(t_screen *screen)
 			flag = 0;
 		if (screen->bin_data[i] == '\n')
 			i++;
+		
+		// DRAWING THE SINE CHUNK
 		draw_sine_chunk(x,c_x,z_y,flag,screen);
+		// FILING FOR THE METRICS
 		fill(x, z_y,screen);
+
+		// GOING TO THE NEXT CHUNK
 		x += c_x;
 		i++;
 	}
