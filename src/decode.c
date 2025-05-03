@@ -17,14 +17,22 @@ void get_bytes(unsigned char *data, int width, int height, int channels) {
 
 	while (x < width)
 	{
+		// GOING THROUGH ONE LINE
+
+		// CHECKING UPPER PART FOR 1 (OUR AMPLITUDE OF SINE IS 100)
 		r1 = data[(401 * width + x) * 4];
+
+		// CHECKING LOWER PART FOR 0 
 		r0 = data[(599 * width + x) * 4];
+
+		// CHECKING FOR TWO POINTS THAT EQUAL AND LAST NEIGBHOUR IS BLACK TO OUR AMPLITUDE (IT MEANS WE HAVE 1)
 		if (r1 == 255 && old_r1 == 0)
 		{
 			one_c++;
 			if (one_c % 2 == 0)
 				printf("1");
 		}
+		// SO DO FOR 0 S
 		if (r0 == 255 && old_r0 == 0)
 		{
 			zero_c++;
@@ -47,5 +55,9 @@ void	decode(t_screen *screen)
 	int	c;
 	unsigned char *pixel_data = stbi_load(screen->image_to_parse,&w,&h,&c,0);
 	
+	// GETTING THE HIDDEN BYTES BY THE GRAPH
 	get_bytes(pixel_data,w,h,c);
+
+	// FREEING THE IMAGE
+	stbi_image_free(pixel_data);
 }

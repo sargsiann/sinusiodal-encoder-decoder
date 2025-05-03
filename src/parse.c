@@ -52,8 +52,12 @@ void	parse(char **argv)
 	screen->operation = operation;
 
 	// IN CASE OF DECODE WEE NEED TO HAVE IMAGE TO PARSE
-	if (strcmp(operation, "decode") == 0)
+	if (strcmp(operation, "decode") == 0) {
 		screen->image_to_parse = argv[2];
+		decode(screen);
+		exit(0);
+	}
+	
 	screen->width = 800;
 	screen->height = 600;
 	screen->bin_data = buffer;
