@@ -46,7 +46,6 @@ void	encode(t_screen *screen)
 	int	z_y = 500;
 
 	float	x = z_x;
-	float	y = 0;
 
 	// CHUNK STEPS
 

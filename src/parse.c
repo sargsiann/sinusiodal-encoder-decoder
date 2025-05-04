@@ -33,6 +33,7 @@ static	char	*validate_file(char *filename, char *operation)
 		// RETURNING BUFFER
 		return (buffer);
 	}
+	return (NULL);
 }
 
 void	parse(char **argv) 

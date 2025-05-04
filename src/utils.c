@@ -35,10 +35,12 @@ void	exit_error(const char *err) {
 int	chunks_total(char *data) 
 {
 	int c = 0;
-	for (int i = 0; i < strlen(data); i++)
+	for (int i = 0; i < BUFFER_SIZE; i++)
 	{
 		if (data[i] != '\n')
 			c++;
+		if (data[i] == 0)
+			break;
 	}
 	return c;
 }

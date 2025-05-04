@@ -6,14 +6,14 @@
 
 // FUNC FOR DECODING THE FILE
 
-void get_bytes(unsigned char *data, int width, int height, int channels) {
+void get_bytes(unsigned char *data, int width) {
 	unsigned char r1 = 0;
 	unsigned char r0 = 0;
 	unsigned char old_r1 = 0;
 	unsigned char old_r0 = 0;
 	int	one_c = 0;
-	int	zero_c;
-	int	x;
+	int	zero_c = 0;
+	int	x = 0;
 
 	while (x < width)
 	{
@@ -56,7 +56,7 @@ void	decode(t_screen *screen)
 	unsigned char *pixel_data = stbi_load(screen->image_to_parse,&w,&h,&c,0);
 	
 	// GETTING THE HIDDEN BYTES BY THE GRAPH
-	get_bytes(pixel_data,w,h,c);
+	get_bytes(pixel_data,w);
 
 	// FREEING THE IMAGE
 	stbi_image_free(pixel_data);

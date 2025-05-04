@@ -32,7 +32,6 @@ void	init_screen(t_screen *screen)
 void	get_bi_buffer(t_screen *screen) {
 	char *r = screen->img->address;
 	char *dest;
-	char *new;
 
 	for (int i = 0; i < HEIGHT; i++) {
 		for (int j = 0; j < WIDTH; j++) {
@@ -72,7 +71,6 @@ void	save_to_file(t_screen *screen)
 	int		channels = 4;
 	int		width = screen->width;
 	int		height = screen->height;
-	char	*buffer;
 
 	// SAVEING IMAGE TO BMP FILE BY STB LIBRARY
 

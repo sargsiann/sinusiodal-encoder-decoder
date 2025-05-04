@@ -6,7 +6,7 @@ NAME = sinus-ed
 
 CC = cc
 
-# CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 # DEPENDENCIES
 
